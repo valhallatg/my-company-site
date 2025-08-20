@@ -8,20 +8,20 @@
   <meta name="robots" content="index, follow" />
   <style>
     :root{
-      --glass: rgba(0,0,0,0.65);
+      --bg1:#2a0f4b;
+      --bg2:#6a00ff;
+      --glass: rgba(255,255,255,0.08);
       --text:#ffffff;
       --text-dim:#d9c7ff;
       --btn:#a67cff;
       --btn-hover:#c3a9ff;
-      --glow:#a67cff;
     }
     *{box-sizing:border-box}
     body{
       margin:0;
       font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
       color:var(--text);
-      background:url("70B908A0-67CE-4EC9-8381-B560F4592286.jpeg") no-repeat center center/cover;
-      background-attachment: fixed; /* фиксируем фон */
+      background:linear-gradient(135deg,var(--bg1),var(--bg2));
       height:100vh;
       display:flex;
       align-items:center;
@@ -33,8 +33,8 @@
       backdrop-filter: blur(10px);
       border-radius:16px;
       border:1px solid rgba(255,255,255,0.15);
-      padding:30px 24px 90px;
-      box-shadow:0 0 30px rgba(166,124,255,0.6); /* фиолетовое свечение */
+      padding:30px 24px 70px;
+      box-shadow:0 12px 40px rgba(0,0,0,0.35);
       position:relative;
     }
     .logo{font-weight:800;letter-spacing:.06em;text-transform:uppercase;font-size:14px;color:var(--text-dim);margin-bottom:12px}
@@ -67,15 +67,12 @@
       border:1px solid rgba(255,255,255,0.25);
     }
 
-    /* Слайды */
+    /* слайды */
     .slide{display:none; animation:fade .4s ease both}
     input[type=radio]{display:none}
     #step1:checked ~ .card .slide1{display:block}
     #step2:checked ~ .card .slide2{display:block}
     #step3:checked ~ .card .slide3{display:block}
-
-    /* На втором слайде делаем больше отступа */
-    .slide2 p:last-of-type{margin-bottom:60px}
 
     @keyframes fade{from{opacity:0; transform:translateY(10px)} to{opacity:1; transform:translateY(0)}}
   </style>
@@ -117,3 +114,6 @@
       <div class="logo">GUARD</div>
       <h2>С радостью, команда GUARD</h2>
       <p>Спасибо, что вы с нами. До встречи в чате бота!</p>
+      <div class="controls">
+        <label class="btn ghost" for="step2">Назад</label>
+        <a class="btn" href="https://t.me/guardbnbot" target="_blank" rel="noopener noreferrer">Написать боту</a>
