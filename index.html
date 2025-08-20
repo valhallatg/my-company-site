@@ -1,58 +1,117 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Наша компания – краткое описание для Google">
-  <title>Наша компания</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GUARD — приветствуем вас</title>
+  <meta name="description" content="Команда GUARD. Добро пожаловать! Проекту 3 года. Присоединяйтесь и пишите нашему боту." />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="GUARD — приветствуем вас" />
+  <meta property="og:description" content="Мы рады видеть вас снова в наших рядах. Проекту 3 года. Присоединяйтесь!" />
+  <meta property="og:type" content="website" />
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #111;
-      color: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
+    :root{
+      --bg1:#2a0f4b;   /* тёмно-фиолетовый */
+      --bg2:#6a00ff;   /* яркий фиолетовый */
+      --glass: rgba(255,255,255,0.08);
+      --text:#ffffff;
+      --text-dim:#d9c7ff;
+      --btn:#a67cff;
+      --btn-hover:#c3a9ff;
     }
-    .modal {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.7);
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    *{box-sizing:border-box}
+    html,body{
+      height:100%;
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(1200px 800px at 10% 10%, rgba(255,255,255,0.08), transparent 65%),
+        radial-gradient(1000px 600px at 90% 90%, rgba(255,255,255,0.06), transparent 60%),
+        linear-gradient(135deg,var(--bg1),var(--bg2));
+      overflow:hidden;
     }
-    .modal-content {
-      background: #222;
-      padding: 20px;
-      border-radius: 8px;
-      max-width: 400px;
-      text-align: center;
-      box-shadow: 0 0 10px rgba(0,0,0,0.5);
-      position: relative;
+    .wrap{
+      position:fixed; inset:0;
+      display:grid; place-items:center;
+      padding:24px;
     }
-    .close {
-      position: absolute;
-      top: 10px; right: 15px;
-      font-size: 20px;
-      cursor: pointer;
-      color: #fff;
+    .card{
+      width:min(720px, 100%);
+      background:var(--glass);
+      backdrop-filter: blur(10px);
+      border:1px solid rgba(255,255,255,0.15);
+      border-radius:16px;
+      box-shadow:0 12px 40px rgba(0,0,0,0.35);
+      padding:28px 24px 64px;
+      position:relative;
+      animation:fadeIn .5s ease both;
+    }
+    .logo{
+      font-weight:800;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+      font-size:14px;
+      color:var(--text-dim);
+      margin-bottom:12px;
+    }
+    h1,h2{margin:0 0 10px}
+    h1{font-size:28px}
+    h2{font-size:22px; color:var(--text-dim); font-weight:600}
+    p{line-height:1.6; margin:10px 0}
+    a{color:#e6dbff}
+    .controls{
+      position:absolute;
+      right:16px; bottom:16px;
+      display:flex; gap:10px;
+    }
+    .btn{
+      appearance:none; border:0;
+      padding:12px 18px;
+      border-radius:10px;
+      background:var(--btn);
+      color:#1a0033;
+      font-weight:700;
+      cursor:pointer;
+      transition:.18s ease;
+      box-shadow:0 6px 20px rgba(166,124,255,0.35);
+    }
+    .btn:hover{ background:var(--btn-hover); transform:translateY(-1px)}
+    .btn:active{ transform:translateY(0)}
+    .ghost{
+      background:transparent; color:var(--text);
+      border:1px solid rgba(255,255,255,0.25);
+      box-shadow:none;
+    }
+    .slide{ display:none; }
+    .slide.active{ display:block; animation:slideIn .35s ease both; }
+    @keyframes fadeIn{ from{opacity:0; transform:translateY(6px)} to{opacity:1; transform:translateY(0)}}
+    @keyframes slideIn{ from{opacity:0; transform:translateY(8px)} to{opacity:1; transform:translateY(0)}}
+
+    /* адаптив */
+    @media (max-width:520px){
+      .card{ padding:22px 16px 72px }
+      .controls{ right:12px; bottom:12px }
+      h1{ font-size:22px }
+      h2{ font-size:18px }
     }
   </style>
 </head>
 <body>
-  <div class="modal" id="modal">
-    <div class="modal-content">
-      <img <img src="my-photo.jpg" alt="GUARD" style="max-width:100%; height:auto; border-radius:8px; margin-bottom:12px;">
-      <span class="close" onclick="document.getElementById('modal').style.display='none'">&times;</span>
-      <h2>Наша компания</h2>
-      <p>вас приветствует команда GUARD, мы рады вас заново видеть в наших рядах, нашему проекту уже 3 года, за это время мы закрыли, очень много каналов, которые очень плохо повлияло на сегмент, в этом числе так же те каналы которые занимались продажей наркатой, так же те каналы которые занимались сливами.
-Теперь пришло время передать вам все те знание благодаря которым вы станете частичка нашего команды, для этого вам необходимо написать нашему боту t.me/guardbnbot)</p>
-      <p>Контакты: @omaau</p>
-    </div>
-  </div>
-</body>
-</html>
+  <main class="wrap" role="main" aria-live="polite">
+    <section class="card" aria-labelledby="title">
+      <!-- СЛАЙД 1 -->
+      <div class="slide active" id="slide-1" role="group" aria-roledescription="слайд" aria-label="Старт">
+        <div class="logo">GUARD</div>
+        <h1 id="title">Добро пожаловать</h1>
+        <p>Нажмите «Далее», чтобы открыть приветствие и подробности.</p>
+        <div class="controls">
+          <button class="btn" data-next>Далее</button>
+        </div>
+      </div>
+
+      <!-- СЛАЙД 2 -->
+      <div class="slide" id="slide-2" role="group" aria-roledescription="слайд" aria-label="Приветствие">
+        <div class="logo">GUARD</div>
+        <h2>Вас приветствует команда GUARD</h2>
+        <p>Мы рады вас заново видеть в наших рядах. Нашему проекту уже <strong>3 года</strong>.
