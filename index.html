@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>GUARD — приветствуем вас</title>
+  <meta name="description" content="Команда GUARD. Добро пожаловать! Проекту 3 года. Присоединяйтесь и пишите нашему боту." />
+  <meta name="robots" content="index, follow" />
   <style>
     :root{
       --bg1:#2a0f4b;
@@ -15,97 +17,103 @@
       --btn-hover:#c3a9ff;
     }
     *{box-sizing:border-box}
-    html,body{
-      height:100%;
+    body{
       margin:0;
       font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
       color:var(--text);
       background:linear-gradient(135deg,var(--bg1),var(--bg2));
-      display:flex; align-items:center; justify-content:center;
+      height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
     }
     .card{
       width:min(720px, 100%);
       background:var(--glass);
       backdrop-filter: blur(10px);
-      border:1px solid rgba(255,255,255,0.15);
       border-radius:16px;
+      border:1px solid rgba(255,255,255,0.15);
+      padding:30px 24px 70px;
       box-shadow:0 12px 40px rgba(0,0,0,0.35);
-      padding:28px 24px 64px;
       position:relative;
     }
-    .logo{ font-weight:800; letter-spacing:.06em; text-transform:uppercase; font-size:14px; color:var(--text-dim); margin-bottom:12px; }
+    .logo{font-weight:800;letter-spacing:.06em;text-transform:uppercase;font-size:14px;color:var(--text-dim);margin-bottom:12px}
     h1,h2{margin:0 0 10px}
     h1{font-size:28px}
-    h2{font-size:22px; color:var(--text-dim); font-weight:600}
+    h2{font-size:22px; color:var(--text-dim)}
     p{line-height:1.6; margin:10px 0}
     a{color:#e6dbff}
-    .controls{ margin-top:20px; display:flex; gap:10px; }
+
+    .controls{
+      position:absolute;
+      right:16px; bottom:16px;
+      display:flex; gap:10px;
+    }
     .btn{
-      appearance:none; border:0;
+      border:0;
       padding:12px 18px;
       border-radius:10px;
       background:var(--btn);
       color:#1a0033;
       font-weight:700;
       cursor:pointer;
-      transition:.18s ease;
-      box-shadow:0 6px 20px rgba(166,124,255,0.35);
-      text-align:center;
+      transition:.2s ease;
+      text-decoration:none;
     }
-    .btn:hover{ background:var(--btn-hover); transform:translateY(-1px)}
-    .btn:active{ transform:translateY(0)}
-    .ghost{ background:transparent; color:var(--text); border:1px solid rgba(255,255,255,0.25); box-shadow:none; }
-    .slide{ display:none; }
-    input[type=radio]{display:none;}
-    #step1:checked ~ .slides .slide1,
-    #step2:checked ~ .slides .slide2,
-    #step3:checked ~ .slides .slide3{ display:block; animation:fadeIn .5s ease both; }
-    @keyframes fadeIn{ from{opacity:0; transform:translateY(6px)} to{opacity:1; transform:translateY(0)} }
+    .btn:hover{background:var(--btn-hover); transform:translateY(-2px)}
+    .btn:active{transform:translateY(0)}
+    .ghost{
+      background:transparent; color:var(--text);
+      border:1px solid rgba(255,255,255,0.25);
+    }
+
+    /* слайды */
+    .slide{display:none; animation:fade .4s ease both}
+    input[type=radio]{display:none}
+    #step1:checked ~ .card .slide1{display:block}
+    #step2:checked ~ .card .slide2{display:block}
+    #step3:checked ~ .card .slide3{display:block}
+
+    @keyframes fade{from{opacity:0; transform:translateY(10px)} to{opacity:1; transform:translateY(0)}}
   </style>
 </head>
 <body>
-  <!-- Переключатели -->
-  <input type="radio" name="step" id="step1" checked>
-  <input type="radio" name="step" id="step2">
-  <input type="radio" name="step" id="step3">
+  <!-- переключатели -->
+  <input type="radio" name="steps" id="step1" checked>
+  <input type="radio" name="steps" id="step2">
+  <input type="radio" name="steps" id="step3">
 
   <section class="card">
-    <div class="slides">
-      <!-- СЛАЙД 1 -->
-      <div class="slide slide1">
-        <div class="logo">GUARD</div>
-        <h1>Добро пожаловать</h1>
-        <p>Нажмите «Далее», чтобы открыть приветствие и подробности.</p>
-        <div class="controls">
-          <label class="btn" for="step2">Далее</label>
-        </div>
-      </div>
-
-      <!-- СЛАЙД 2 -->
-      <div class="slide slide2">
-        <div class="logo">GUARD</div>
-        <h2>Вас приветствует команда GUARD</h2>
-        <p>Нашему проекту уже <strong>3 года</strong>. Мы закрыли множество каналов, негативно влиявших на сегмент.</p>
-        <p>Чтобы стать частью команды — напишите нашему боту:<br>
-          <a href="https://t.me/guardbnbot" target="_blank">t.me/guardbnbot</a>
-        </p>
-        <div class="controls">
-          <label class="btn ghost" for="step1">Назад</label>
-          <label class="btn" for="step3">Далее</label>
-        </div>
-      </div>
-
-      <!-- СЛАЙД 3 -->
-      <div class="slide slide3">
-        <div class="logo">GUARD</div>
-        <h2>С радостью, команда GUARD</h2>
-        <p>Спасибо, что вы с нами. До встречи в чате бота!</p>
-        <div class="controls">
-          <label class="btn ghost" for="step2">Назад</label>
-          <a class="btn" href="https://t.me/guardbnbot" target="_blank">Написать боту</a>
-        </div>
+    <!-- СЛАЙД 1 -->
+    <div class="slide slide1">
+      <div class="logo">GUARD</div>
+      <h1>Добро пожаловать</h1>
+      <p>Нажмите «Далее», чтобы открыть приветствие и подробности.</p>
+      <div class="controls">
+        <label class="btn" for="step2">Далее</label>
       </div>
     </div>
-  </section>
-</body>
-</html>
+
+    <!-- СЛАЙД 2 -->
+    <div class="slide slide2">
+      <div class="logo">GUARD</div>
+      <h2>Вас приветствует команда GUARD</h2>
+      <p>Мы рады вас заново видеть в наших рядах. Нашему проекту уже <strong>3 года</strong>.  
+      За это время мы закрыли множество каналов, негативно влиявших на сегмент, включая те, что занимались продажей и сливами.</p>
+      <p>Теперь пришло время передать вам знания, благодаря которым вы станете частью нашей команды.  
+      Для этого напишите нашему боту:  
+      <a href="https://t.me/guardbnbot" target="_blank" rel="noopener noreferrer">t.me/guardbnbot</a></p>
+      <div class="controls">
+        <label class="btn ghost" for="step1">Назад</label>
+        <label class="btn" for="step3">Далее</label>
+      </div>
+    </div>
+
+    <!-- СЛАЙД 3 -->
+    <div class="slide slide3">
+      <div class="logo">GUARD</div>
+      <h2>С радостью, команда GUARD</h2>
+      <p>Спасибо, что вы с нами. До встречи в чате бота!</p>
+      <div class="controls">
+        <label class="btn ghost" for="step2">Назад</label>
+        <a class="btn" href="https://t.me/guardbnbot" target="_blank" rel="noopener noreferrer">Написать боту</a>
