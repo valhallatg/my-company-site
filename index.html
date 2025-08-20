@@ -1,35 +1,108 @@
-<div class="slide slide1" role="group" aria-roledescription="слайд" aria-label="Старт">
-          <div class="logo">GUARD</div>
-          <h1 id="title">Добро пожаловать</h1>
-          <p>Нажмите «Далее», чтобы открыть приветствие и подробности.</p>
-          <div class="controls">
-            <label class="btn" for="step2">Далее</label>
-          </div>
-        </div>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GUARD</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #2a0f4b, #6a00ff);
+      color: white;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    main {
+      width: 100%;
+      max-width: 600px;
+      padding: 20px;
+    }
+    .slides {
+      position: relative;
+    }
+    .slide {
+      display: none;
+      animation: fadeIn 0.5s;
+    }
+    input[type="radio"] {
+      display: none;
+    }
+    #step1:checked ~ .slides .slide1,
+    #step2:checked ~ .slides .slide2,
+    #step3:checked ~ .slides .slide3 {
+      display: block;
+    }
+    .logo {
+      font-size: 32px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    .controls {
+      margin-top: 20px;
+    }
+    .btn {
+      background: #a67cff;
+      color: black;
+      padding: 12px 20px;
+      border-radius: 8px;
+      margin: 5px;
+      text-decoration: none;
+      cursor: pointer;
+      display: inline-block;
+      font-weight: bold;
+    }
+    .btn:hover { background: #c3a9ff; }
+    .ghost { background: transparent; border: 2px solid #a67cff; color: white; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <!-- скрытые переключатели -->
+  <input type="radio" name="step" id="step1" checked>
+  <input type="radio" name="step" id="step2">
+  <input type="radio" name="step" id="step3">
 
-        <!-- СЛАЙД 2 -->
-        <div class="slide slide2" role="group" aria-roledescription="слайд" aria-label="Приветствие">
-          <div class="logo">GUARD</div>
-          <h2>Вас приветствует команда GUARD</h2>
-          <p>Мы рады вас заново видеть в наших рядах. Нашему проекту уже <strong>3 года</strong>. За это время мы закрыли множество каналов, негативно влиявших на сегмент, включая те, что были связаны со сливами.</p>
-          <p>Теперь пришло время передать вам знания, благодаря которым вы станете частью нашей команды. Для этого напишите нашему боту:
-            <a href="https://t.me/guardbnbot" target="_blank" rel="noopener noreferrer">t.me/guardbnbot</a>
-          </p>
-          <div class="controls">
-            <label class="btn ghost" for="step1">Назад</label>
-            <label class="btn" for="step3">Далее</label>
-          </div>
+  <main>
+    <section class="slides">
+      <!-- СЛАЙД 1 -->
+      <div class="slide slide1">
+        <div class="logo">GUARD</div>
+        <h1>Добро пожаловать</h1>
+        <p>Нажмите «Далее», чтобы открыть приветствие и подробности.</p>
+        <div class="controls">
+          <label class="btn" for="step2">Далее</label>
         </div>
+      </div>
 
-        <!-- СЛАЙД 3 -->
-        <div class="slide slide3" role="group" aria-roledescription="слайд" aria-label="Финал">
-          <div class="logo">GUARD</div>
-          <h2>С радостью, команда GUARD</h2>
-          <p>Спасибо, что вы с нами. До встречи в чате бота!</p>
-          <div class="controls">
-            <label class="btn ghost" for="step2">Назад</label>
-            <a class="btn" href="https://t.me/guardbnbot" target="_blank" rel="noopener noreferrer">Написать боту</a>
-          </div>
+      <!-- СЛАЙД 2 -->
+      <div class="slide slide2">
+        <div class="logo">GUARD</div>
+        <h2>Вас приветствует команда GUARD</h2>
+        <p>Мы рады вас заново видеть в наших рядах. Нашему проекту уже <strong>3 года</strong>. За это время мы закрыли множество каналов, негативно влиявших на сегмент, включая те, что были связаны со сливами.</p>
+        <p>Теперь пришло время передать вам знания, благодаря которым вы станете частью нашей команды. Для этого напишите нашему боту:
+          <a href="https://t.me/guardbnbot" target="_blank" rel="noopener noreferrer">t.me/guardbnbot</a>
+        </p>
+        <div class="controls">
+          <label class="btn ghost" for="step1">Назад</label>
+          <label class="btn" for="step3">Далее</label>
+        </div>
+      </div>
+
+      <!-- СЛАЙД 3 -->
+      <div class="slide slide3">
+        <div class="logo">GUARD</div>
+        <h2>С радостью, команда GUARD</h2>
+        <p>Спасибо, что вы с нами. До встречи в чате бота!</p>
+        <div class="controls">
+          <label class="btn ghost" for="step2">Назад</label>
+          <a class="btn" href="https://t.me/guardbnbot" target="_blank" rel="noopener noreferrer">Написать боту</a>
         </div>
       </div>
     </section>
