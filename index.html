@@ -3,74 +3,74 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GUARD</title>
+  <title>GUARD — приветствуем вас</title>
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #2a0f4b, #6a00ff);
-      color: white;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
+    :root{
+      --bg1:#2a0f4b;
+      --bg2:#6a00ff;
+      --glass: rgba(255,255,255,0.08);
+      --text:#ffffff;
+      --text-dim:#d9c7ff;
+      --btn:#a67cff;
+      --btn-hover:#c3a9ff;
     }
-    main {
-      width: 100%;
-      max-width: 600px;
-      padding: 20px;
+    *{box-sizing:border-box}
+    html,body{
+      height:100%;
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
+      color:var(--text);
+      background:linear-gradient(135deg,var(--bg1),var(--bg2));
+      display:flex; align-items:center; justify-content:center;
     }
-    .slides {
-      position: relative;
+    .card{
+      width:min(720px, 100%);
+      background:var(--glass);
+      backdrop-filter: blur(10px);
+      border:1px solid rgba(255,255,255,0.15);
+      border-radius:16px;
+      box-shadow:0 12px 40px rgba(0,0,0,0.35);
+      padding:28px 24px 64px;
+      position:relative;
     }
-    .slide {
-      display: none;
-      animation: fadeIn 0.5s;
+    .logo{ font-weight:800; letter-spacing:.06em; text-transform:uppercase; font-size:14px; color:var(--text-dim); margin-bottom:12px; }
+    h1,h2{margin:0 0 10px}
+    h1{font-size:28px}
+    h2{font-size:22px; color:var(--text-dim); font-weight:600}
+    p{line-height:1.6; margin:10px 0}
+    a{color:#e6dbff}
+    .controls{ margin-top:20px; display:flex; gap:10px; }
+    .btn{
+      appearance:none; border:0;
+      padding:12px 18px;
+      border-radius:10px;
+      background:var(--btn);
+      color:#1a0033;
+      font-weight:700;
+      cursor:pointer;
+      transition:.18s ease;
+      box-shadow:0 6px 20px rgba(166,124,255,0.35);
+      text-align:center;
     }
-    input[type="radio"] {
-      display: none;
-    }
+    .btn:hover{ background:var(--btn-hover); transform:translateY(-1px)}
+    .btn:active{ transform:translateY(0)}
+    .ghost{ background:transparent; color:var(--text); border:1px solid rgba(255,255,255,0.25); box-shadow:none; }
+    .slide{ display:none; }
+    input[type=radio]{display:none;}
     #step1:checked ~ .slides .slide1,
     #step2:checked ~ .slides .slide2,
-    #step3:checked ~ .slides .slide3 {
-      display: block;
-    }
-    .logo {
-      font-size: 32px;
-      font-weight: bold;
-      margin-bottom: 20px;
-    }
-    .controls {
-      margin-top: 20px;
-    }
-    .btn {
-      background: #a67cff;
-      color: black;
-      padding: 12px 20px;
-      border-radius: 8px;
-      margin: 5px;
-      text-decoration: none;
-      cursor: pointer;
-      display: inline-block;
-      font-weight: bold;
-    }
-    .btn:hover { background: #c3a9ff; }
-    .ghost { background: transparent; border: 2px solid #a67cff; color: white; }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+    #step3:checked ~ .slides .slide3{ display:block; animation:fadeIn .5s ease both; }
+    @keyframes fadeIn{ from{opacity:0; transform:translateY(6px)} to{opacity:1; transform:translateY(0)} }
   </style>
 </head>
 <body>
-  <!-- скрытые переключатели -->
+  <!-- Переключатели -->
   <input type="radio" name="step" id="step1" checked>
   <input type="radio" name="step" id="step2">
   <input type="radio" name="step" id="step3">
 
-  <main>
-    <section class="slides">
+  <section class="card">
+    <div class="slides">
       <!-- СЛАЙД 1 -->
       <div class="slide slide1">
         <div class="logo">GUARD</div>
@@ -85,9 +85,9 @@
       <div class="slide slide2">
         <div class="logo">GUARD</div>
         <h2>Вас приветствует команда GUARD</h2>
-        <p>Мы рады вас заново видеть в наших рядах. Нашему проекту уже <strong>3 года</strong>. За это время мы закрыли множество каналов, негативно влиявших на сегмент, включая те, что были связаны со сливами.</p>
-        <p>Теперь пришло время передать вам знания, благодаря которым вы станете частью нашей команды. Для этого напишите нашему боту:
-          <a href="https://t.me/guardbnbot" target="_blank" rel="noopener noreferrer">t.me/guardbnbot</a>
+        <p>Нашему проекту уже <strong>3 года</strong>. Мы закрыли множество каналов, негативно влиявших на сегмент.</p>
+        <p>Чтобы стать частью команды — напишите нашему боту:<br>
+          <a href="https://t.me/guardbnbot" target="_blank">t.me/guardbnbot</a>
         </p>
         <div class="controls">
           <label class="btn ghost" for="step1">Назад</label>
@@ -102,10 +102,10 @@
         <p>Спасибо, что вы с нами. До встречи в чате бота!</p>
         <div class="controls">
           <label class="btn ghost" for="step2">Назад</label>
-          <a class="btn" href="https://t.me/guardbnbot" target="_blank" rel="noopener noreferrer">Написать боту</a>
+          <a class="btn" href="https://t.me/guardbnbot" target="_blank">Написать боту</a>
         </div>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
 </body>
 </html>
