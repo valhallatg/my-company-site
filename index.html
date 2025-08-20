@@ -121,9 +121,215 @@
       <h2>С радостью, команда GUARD</h2>
       <p>Спасибо, что вы с нами. До встречи в чате бота!</p>
       <div class="controls">
+       <label class="btn" for="step3">Далее</label>
+      </div>
+    </div>
 
         
         <label class="btn ghost" for="step2">Назад</label>
         <a class="btn" href="https://t.me/guardbnbot" target="_blank" rel="noopener noreferrer">Написать боту</a>
 
+         <!-- СЛАЙД 4 -->
+    <div class="slide slide4">
+      <div class="logo">GUARD</div>
+      <h2>Вас приветствует команда GUARD</h2>
+      <p<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>G.U.A.R.D Interface</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Orbitron', sans-serif;
+      color: #8102ff;
+      line-height: 1.6;
+      font-size: clamp(14px, 2vw, 18px);
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* 🎬 Видео-фон — адаптивный */
+    #bg-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      min-width: 100%;
+      min-height: 100%;
+      object-fit: cover;
+      z-index: -2;
+      opacity: 0.25;
+      pointer-events: none;
+    }
+
+    /* 🌧️ Цифровой дождь */
+    body::after {
+      content: '010101010101010101010101010101010101010101010101';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      font-size: 0.8rem;
+      color: rgba(198, 255, 255, 0.05);
+      white-space: nowrap;
+      overflow: hidden;
+      animation: rain 10s linear infinite;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    @keyframes rain {
+      0% { transform: translateY(-100%); }
+      100% { transform: translateY(100%); }
+    }
+
+    /* 🔼 Адаптированный header */
+    header {
+      text-align: center;
+      padding: clamp(3rem, 8vw, 6rem) 1.5rem;
+      backdrop-filter: blur(100px)
+      position: relative;
+      max-width: 100%;
+      box-sizing: border-box;
+    }
+
+    @keyframes floatUp {
+      0% { opacity: 0; transform: translateY(40px) scale(0.95); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    @keyframes glitch {
+      0% { text-shadow: 2px 0 red, -2px 0 blue; }
+      20% { text-shadow: -2px 0 red, 2px 0 blue; }
+      40% { text-shadow: 2px 0 green, -2px 0 magenta; }
+      60% { text-shadow: -2px 0 green, 2px 0 magenta; }
+      80% { text-shadow: 2px 0 cyan, -2px 0 yellow; }
+      100% { text-shadow: -2px 0 cyan, 2px 0 yellow; }
+    }
+
+    @keyframes pulseGlow {
+      0% { opacity: 0.2; transform: scale(1); }
+      50% { opacity: 0.6; transform: scale(1.05); }
+      100% { opacity: 0.2; transform: scale(1); }
+    }
+
+  header h1 {
+  font-size: clamp(4rem, 12vw, 6rem); /* ещё крупнее */
+  margin-top: 4rem; /* опущено ниже */
+  letter-spacing: 0.4rem;
+  color: #8102ff;
+  text-shadow: 0 0 40px #8102ff;
+  animation: floatUp 1.5s ease-out forwards, glitch 1s infinite;
+  position: relative;
+  word-break: break-word;
+  line-height: 1.1;
+}
+
+    header h1::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 120%;
+      height: 120%;
+      transform: translate(-50%, -50%);
+      border: 2px solid #8102ff;
+      border-radius: 10px;
+      animation: pulseGlow 2s infinite;
+      z-index: -1;
+    }
+
+  header p {
+  font-size: clamp(1.5rem, 6vw, 2rem); /* заметно крупнее */
+  margin-top: 2rem; /* увеличен отступ */
+  animation: fadeUp 1.5s ease-out forwards;
+  opacity: 0;
+  transform: translateY(20px);
+  word-break: break-word;
+}
+
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      padding: 2rem;
+    }
+
+    #myContainer {
+      width: 300px;
+      padding: 10px;
+      border: 1px solid black;
+      box-sizing: border-box;
+      box-shadow: 0 0 20px rgba(192, 132, 252, 0.3);
+      transition: box-shadow 0.3s ease-in-out;
+    }
+
+    #myContainer:hover {
+      box-shadow: 0 0 25px #8102ff, 0 0 50px #8102ff;
+      border-color: #8102ff;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.85rem;
+      color: #f4f4f4;
+      background: #8102ff;
+      backdrop-filter: blur(6px);
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
+      }
+
+      .grid {
+        padding: 1rem;
+        gap: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- 🎬 Видео-фон -->
+  <video autoplay muted playsinline id="bg-video">
+    <source src="гуард.MP4" type="video/mp4" />
+    Ваш браузер не поддерживает видео.
+  </video>
+
+  <header>
+    <h1>G.U.A.R.D</h1>
+    <p>Global Unified Advanced Response Division</p>
+  </header>
+
+  <div id="myContainer" style="width: 5000px; height: 1000px; opacity: 0.0;"></div>
+
+  <footer>
+    &copy; 2025 G.U.A.R.D Interface. Режим: ACTIVE | Код: VIOLET-7 | Время: <span id="time"></span>
+  </footer>
+
+  <script>
+    const timeSpan = document.getElementById("time");
+    setInterval(() => {
+      const now = new Date();
+      timeSpan.textContent = now.toLocaleTimeString();
+    }, 1000);
+  </script>
+</body>
+</html>
+   <label class="btn ghost" for="step2">Назад</label>
     
