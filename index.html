@@ -1,133 +1,218 @@
+Valhalla, [21.08.2025 18:43]
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>GUARD — приветствуем вас</title>
-  <meta name="description" content="Команда GUARD. Добро пожаловать! Проекту 3 года. Присоединяйтесь и пишите нашему боту." />
-  <meta name="robots" content="index, follow" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GUARD</title>
   <style>
-    :root{
-      --bg1:#2a0f4b;
-      --bg2:#6a00ff;
-      --glass: rgba(255,255,255,0.08);
-      --text:#ffffff;
-      --text-dim:#d9c7ff;
-      --btn:#a67cff;
-      --btn-hover:#c3a9ff;
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
-      color:var(--text);
-      background:linear-gradient(135deg,var(--bg1),var(--bg2));
-      height:100vh;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-    }
-    .card{
-      width:min(720px, 100%);
-      background:var(--glass);
-      backdrop-filter: blur(10px);
-      border-radius:16px;
-      border:1px solid rgba(255,255,255,0.15);
-      padding:30px 24px 70px;
-      box-shadow:0 12px 40px rgba(0,0,0,0.35);
-      position:relative;
-    }
-    .logo{font-weight:800;letter-spacing:.06em;text-transform:uppercase;font-size:14px;color:var(--text-dim);margin-bottom:12px}
-    h1,h2{margin:0 0 10px}
-    h1{font-size:28px}
-    h2{font-size:22px; color:var(--text-dim)}
-    p{line-height:1.6; margin:10px 0}
-    a{color:#e6dbff}
-
-    .controls{
-      position:absolute;
-      right:16px; bottom:16px;
-      display:flex; gap:10px;
-    }
-    .btn{
-      border:0;
-      padding:12px 18px;
-      border-radius:10px;
-      background:var(--btn);
-      color:#1a0033;
-      font-weight:700;
-      cursor:pointer;
-      transition:.2s ease;
-      text-decoration:none;
-    }
-    .btn:hover{background:var(--btn-hover); transform:translateY(-2px)}
-    .btn:active{transform:translateY(0)}
-    .ghost{
-      background:transparent; color:var(--text);
-      border:1px solid rgba(255,255,255,0.25);
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: white;
+      background: url('70B908A0-67CE-4EC9-8381-B560F4592286.jpeg') no-repeat center center fixed;
+      background-size: cover;
+      overflow-x: hidden;
     }
 
-    /* слайды */
-    .slide{display:none; animation:fade .4s ease both}
-    input[type=radio]{display:none}
-    #step1:checked ~ .card .slide1{display:block}
-    #step2:checked ~ .card .slide2{display:block}
-    #step3:checked ~ .card .slide3{display:block}
+    .slide {
+      display: none;
+      height: 100vh;
+      width: 100%;
+      text-align: center;
+      padding: 40px 20px;
+      box-sizing: border-box;
+    }
 
-    @keyframes fade{from{opacity:0; transform:translateY(10px)} to{opacity:1; transform:translateY(0)}}
+    input[type="radio"] {
+      display: none;
+    }
+
+    #step1:checked ~ .slides .slide1,
+    #step2:checked ~ .slides .slide2,
+    #step3:checked ~ .slides .slide3,
+    #step4:checked ~ .slides .slide4,
+    #anti:checked ~ .slides .anti,
+    #azart:checked ~ .slides .azart,
+    #shop:checked ~ .slides .shop {
+      display: block;
+      animation: fadeIn 0.6s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+
+    h1, h2 {
+      margin-bottom: 20px;
+      color: #fff;
+      text-shadow: 0 0 10px #7d2ae8;
+    }
+
+    .logo {
+      font-size: 36px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      text-shadow: 0 0 20px #7d2ae8;
+    }
+
+    .controls {
+      margin-top: 30px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 24px;
+      margin: 5px;
+      font-size: 16px;
+      font-weight: bold;
+      color: #fff;
+      background: #7d2ae8;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+
+    .btn:hover {
+      background: #a855f7;
+    }
+
+    .btn.ghost {
+      background: transparent;
+      border: 2px solid #fff;
+      color: #fff;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    ul li {
+      margin: 6px 0;
+      font-size: 18px;
+    }
   </style>
 </head>
 <body>
-  <!-- переключатели -->
-  <input type="radio" name="steps" id="step1" checked>
-  <input type="radio" name="steps" id="step2">
-  <input type="radio" name="steps" id="step3">
+  <!-- Радиокнопки для переключения -->
+  <input type="radio" id="step1" name="slider" checked>
+  <input type="radio" id="step2" name="slider">
+  <input type="radio" id="step3" name="slider">
+  <input type="radio" id="step4" name="slider">
 
-  <section class="card">
-    <!-- СЛАЙД 1 -->
-    <div class="slide slide1">
-      <div class="logo">GUARD</div>
-      <h1>Добро пожаловать</h1>
-      <p>Нажмите «Далее», чтобы открыть приветствие и подробности.</p>
-      <div class="controls">
-        <label class="btn" for="step2">Далее</label>
+  <input type="radio" id="anti" name="slider">
+  <input type="radio" id="azart" name="slider">
+  <input type="radio" id="shop" name="slider">
+
+  <main>
+    <section class="slides">
+      <!-- СЛАЙД 1 -->
+      <div class="slide slide1">
+        <div class="logo">GUARD</div>
+        <h1>Добро пожаловать</h1>
+        <p>Нажмите «Далее», чтобы открыть приветствие и подробности.</p>
+        <div class="controls">
+          <label class="btn" for="step2">Далее</label>
+        </div>
       </div>
-    </div>
 
-    <!-- СЛАЙД 2 -->
-    <div class="slide slide2">
-      <div class="logo">GUARD</div>
-      <h2>Вас приветствует команда GUARD</h2>
-      <p>Мы рады вас заново видеть в наших рядах. Нашему проекту уже <strong>3 года</strong>.  
-
-
-
-        
-      За это время мы закрыли множество каналов, негативно влиявших на сегмент.</p>
-      <p>Теперь пришло время передать вам знания, благодаря которым вы станете частью нашей команды.  
-      Для этого напишите нашему боту:  
-        <p</p>
-      <a href="https://t.me/guardbnbot" target="_blank" rel="noopener noreferrer">t.me/guardbnbot</a></p>
-      <div class="controls">
-
-        
-        <label class="btn ghost" for="step1">Назад</label>
-        <label class="btn" for="step3">Далее</label>
+      <!-- СЛАЙД 2 -->
+      <div class="slide slide2">
+        <div class="logo">GUARD</div>
+        <h2>Вас приветствует команда GUARD</h2>
+        <p>Мы рады вас заново видеть в наших рядах. Нашему проекту уже <strong>3 года</strong>. За это время мы закрыли множество каналов, негативно влиявших на сегмент, включая те, что были связаны со сливами.</p>
+        <p>Теперь пришло время передать вам знания, благодаря которым вы станете частью нашей команды. Для этого напишите нашему боту:
+          <a href="https://t.me/guardbnbot" target="_blank">t.me/guardbnbot</a>
+        </p>
+        <div class="controls">
+          <label class="btn ghost" for="step1">Назад</label>
+          <label class="btn" for="step3">Далее</label>
+        </div>
       </div>
-    </div>
 
-    <!-- СЛАЙД 3 -->
-    <div class="slide slide3">
-      <div class="logo">GUARD</div>
-      <h2>С радостью, команда GUARD</h2>
-      <p>Спасибо, что вы с нами. До встречи в чате бота!</p>
-      <div class="controls">
-      
+      <!-- СЛАЙД 3 -->
+      <div class="slide slide3">
+        <div class="logo">GUARD</div>
+        <h2>С радостью, команда GUARD</h2>
+        <p>Спасибо, что вы с нами. До встречи в чате бота!</p>
+        <div class="controls">
+          <label class="btn ghost" for="step2">Назад</label>
+          <a class="btn" href="https://t.me/guardbnbot" target="_blank">Написать боту</a>
+          <label class="btn" for="step4">Далее</label>
+        </div>
+      </div>
 
-        
-        <label class="btn ghost" for="step2">Назад</label>
-        <a class="btn" href="https://t.me/guardbnbot" target="_blank" rel="noopener noreferrer">Написать боту</a>
+      <!-- СЛАЙД 4 -->
+      <div class="slide slide4">
+        <div class="logo">GUARD</div>
+        <h2>work by GUARD</h2>
 
-  
-   
-    
+Valhalla, [21.08.2025 18:43]
+<div class="controls">
+          <label class="btn" for="anti">Анти-армянский</label><br>
+          <label class="btn" for="azart">Азарт</label><br>
+          <label class="btn" for="shop">Шоп</label>
+        </div>
+        <div class="controls">
+          <label class="btn ghost" for="step3">Назад</label>
+        </div>
+      </div>
+
+      <!-- ОКНО АНТИ-АРМЯНСКИЙ -->
+      <div class="slide anti">
+        <h2>work by GUARD</h2>
+        <ul>
+          <li>андастирак - 4к</li>
+          <li>ардар датавор - 12к</li>
+          <li>аргишт апер - 18к</li>
+          <li>позорище - 31к</li>
+          <li>хай-слив - 2к</li>
+          <li>азгаин - 700</li>
+          <li>хайкакан сливнер - 3,5к</li>
+          <li>армед - 1,7к</li>
+          <li>нате приват - 1,9к</li>
+          <li>немесис - 1,8к</li>
+          <li>корданзвац - 200</li>
+          <li>ереванян кянк - 9,1к</li>
+          <li>эск ереван - 40к</li>
+          <li>хандипум ереван - 17к</li>
+          <li>ере 21+ - 7,3к</li>
+        </ul>
+        <div class="controls">
+          <label class="btn ghost" for="step4">Назад</label>
+        </div>
+      </div>
+
+      <!-- ОКНО АЗАРТ -->
+      <div class="slide azart">
+        <h2>work by GUARD</h2>
+        <ul>
+          <li>тото-гаминг - 11к</li>
+          <li>аджарабет - 14к</li>
+        </ul>
+        <div class="controls">
+          <label class="btn ghost" for="step4">Назад</label>
+        </div>
+      </div>
+
+      <!-- ОКНО ШОП -->
+      <div class="slide shop">
+        <h2>work by GUARD</h2>
+        <ul>
+          <li>сев шука - 11,3к</li>
+          <li>кристал ам - 4,5к</li>
+        </ul>
+        <div class="controls">
+          <label class="btn ghost" for="step4">Назад</label>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
