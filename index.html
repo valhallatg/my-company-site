@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Тест переключения слайдов</title>
+  <title>Тест слайдов</title>
   <style>
     body { margin: 0; font-family: sans-serif; background: #111; color: #fff; }
     .slide {
@@ -25,17 +25,17 @@
   </style>
 </head>
 <body>
-  <div class="slide active">
-    <div>Слайд1</div>
-    <button onclick="nextSlide()">Далее</button>
+  <div class="slide active" id="slide1">
+    <div>Слайд 1</div>
+    <button id="btn1">Далее</button>
   </div>
-  <div class="slide">
-    <div>Слайд2</div>
-    <button onclick="nextSlide()">Далее</button>
+  <div class="slide" id="slide2">
+    <div>Слайд 2</div>
+    <button id="btn2">Далее</button>
   </div>
-  <div class="slide">
-    <div>Слайд3</div>
-    <button onclick="nextSlide()">Начать тест</button>
+  <div class="slide" id="slide3">
+    <div>Слайд 3</div>
+    <button id="btn3">Снова в начало</button>
   </div>
 
   <script>
@@ -51,9 +51,14 @@
 
     function nextSlide() {
       currentSlide++;
-      if (currentSlide >= slides.length) currentSlide = 0; // зациклено
+      if (currentSlide >= slides.length) currentSlide = 0;
       showSlide(currentSlide);
     }
+
+    // Вешаем обработчики после загрузки страницы
+    document.getElementById("btn1").addEventListener("click", nextSlide);
+    document.getElementById("btn2").addEventListener("click", nextSlide);
+    document.getElementById("btn3").addEventListener("click", nextSlide);
   </script>
 </body>
 </html>
