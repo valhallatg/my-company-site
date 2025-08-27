@@ -3,9 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Тест слайдов</title>
+  <title>CyberGuard — Защита от мошенников</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Roboto&display=swap" rel="stylesheet">
   <style>
-    body { margin: 0; font-family: sans-serif; background: #111; color: #fff; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: #0d001a;
+      color: #fff;
+      overflow: hidden;
+    }
     .slide {
       width: 100vw;
       height: 100vh;
@@ -13,29 +20,87 @@
       justify-content: center;
       align-items: center;
       flex-direction: column;
-      font-size: 2em;
+      text-align: center;
+      padding: 20px;
     }
     .active { display: flex; }
+    h1, h2 {
+      font-family: 'Orbitron', sans-serif;
+      margin-bottom: 20px;
+      color: #b84dff;
+      text-shadow: 0 0 10px #b84dff, 0 0 20px #7a1fbd;
+    }
+    p {
+      max-width: 700px;
+      font-size: 1.2em;
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
     button {
-      margin-top: 20px;
-      padding: 10px 20px;
+      background: #b84dff;
+      color: #0d001a;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 6px;
       font-size: 1em;
       cursor: pointer;
+      transition: 0.3s;
+      margin: 5px;
+      box-shadow: 0 0 10px #b84dff, 0 0 20px #7a1fbd;
     }
+    button:hover {
+      background: #9c2aff;
+      box-shadow: 0 0 20px #d28dff;
+    }
+    .quiz-option { display: block; margin: 10px 0; }
+    .result { font-size: 1.5em; margin-top: 20px; color: #8affc1; }
+    .explanation { font-size: 1em; color: #ff9ed1; margin-top: 10px; }
   </style>
 </head>
 <body>
+  <!-- Слайды -->
   <div class="slide active" id="slide1">
-    <div>Слайд 1</div>
-    <button id="btn1">Далее</button>
+    <h1>CyberGuard 🔐</h1>
+    <p>Научись защищаться от онлайн-мошенников.<br>
+    Пройди обучение и протестируй свои знания.</p>
+    <button id="btn1">Начать обучение</button>
   </div>
+
   <div class="slide" id="slide2">
-    <div>Слайд 2</div>
+    <h2>🎣 Фишинг</h2>
+    <p>Не переходи по подозрительным ссылкам и письмам,<br> даже если они выглядят как «от банка».</p>
     <button id="btn2">Далее</button>
   </div>
+
   <div class="slide" id="slide3">
-    <div>Слайд 3</div>
-    <button id="btn3">Снова в начало</button>
+    <h2>🔑 Пароли и 2FA</h2>
+    <p>Используй длинные пароли и включай двухфакторную аутентификацию.<br>
+    Надёжный пароль содержит буквы, цифры и символы.</p>
+    <button id="btn3">Далее</button>
+  </div>
+
+  <div class="slide" id="slide4">
+    <h2>📱 Соцсети</h2>
+    <p>Не делись личной информацией в открытом доступе.<br>
+    Никогда не публикуй пароли, паспортные данные или банковские реквизиты.</p>
+    <button id="btn4">Далее</button>
+  </div>
+
+  <div class="slide" id="slide5">
+    <h2>🛒 Онлайн-покупки</h2>
+    <p>Плати только через проверенные сервисы.<br>
+    Проверяй, чтобы адрес сайта начинался с <b>https://</b>.</p>
+    <button id="btn5">Перейти к тесту</button>
+  </div>
+
+  <div class="slide" id="slide6">
+    <h2>📝 Мини-тест</h2>
+    <div id="quiz">
+      <div id="question"></div>
+      <div id="options"></div>
+      <div id="explanation" class="explanation"></div>
+    </div>
+    <div id="quizResult" class="result" style="display:none;"></div>
   </div>
 
   <script>
@@ -43,22 +108,96 @@
     const slides = document.querySelectorAll(".slide");
 
     function showSlide(index) {
-      slides.forEach((s, i) => {
-        s.classList.remove("active");
-        if (i === index) s.classList.add("active");
+      slides.forEach((s, i) => s.classList.remove("active"));
+      slides[index].classList.add("active");
+      currentSlide = index;
+    }
+
+    // Привязка кнопок к переходам
+    document.getElementById("btn1").addEventListener("click", () => showSlide(1));
+    document.getElementById("btn2").addEventListener("click", () => showSlide(2));
+    document.getElementById("btn3").addEventListener("click", () => showSlide(3));
+    document.getElementById("btn4").addEventListener("click", () => showSlide(4));
+    document.getElementById("btn5").addEventListener("click", () => { showSlide(5); startQuiz(); });
+
+    // ---- Тест ----
+    const quizData = [
+      {
+        question: "1) Пришло письмо от банка с просьбой ввести пароль. Что делать?",
+        options: ["Ввести пароль", "Игнорировать и проверить в официальном приложении", "Переслать другу"],
+        correct: 1,
+        explanation: "Фишинговые письма часто маскируются под «банк». Всегда проверяй в официальном приложении."
+      },
+      {
+        question: "2) Какой пароль лучше?",
+        options: ["qwerty123", "123456", "M9$gHt!42z"],
+        correct: 2,
+        explanation: "Надёжный пароль должен быть длинным и содержать буквы, цифры и символы."
+      },
+      {
+        question: "3) Какой сайт безопаснее?",
+        options: ["http://shop.com", "https://secure-shop.com", "shop.com"],
+        correct: 1,
+        explanation: "HTTPS шифрует соединение и подтверждает подлинность сайта."
+      }
+    ];
+
+    let currentQuestion = 0;
+    let score = 0;
+
+    function startQuiz() {
+      currentQuestion = 0;
+      score = 0;
+      document.getElementById("quizResult").style.display = "none";
+      document.getElementById("quiz").style.display = "block";
+      showQuestion();
+    }
+
+    function showQuestion() {
+      const q = quizData[currentQuestion];
+      document.getElementById("question").innerHTML = `<p>${q.question}</p>`;
+      const optionsDiv = document.getElementById("options");
+      const explanationDiv = document.getElementById("explanation");
+      optionsDiv.innerHTML = "";
+      explanationDiv.innerHTML = "";
+      q.options.forEach((opt, i) => {
+        const btn = document.createElement("button");
+        btn.innerText = opt;
+        btn.className = "quiz-option";
+        btn.onclick = () => checkAnswer(i);
+        optionsDiv.appendChild(btn);
       });
     }
 
-    function nextSlide() {
-      currentSlide++;
-      if (currentSlide >= slides.length) currentSlide = 0;
-      showSlide(currentSlide);
+    function checkAnswer(i) {
+      const q = quizData[currentQuestion];
+      const explanationDiv = document.getElementById("explanation");
+
+      if (i === q.correct) {
+        score++;
+        explanationDiv.innerHTML = "✅ Верно!";
+      } else {
+        explanationDiv.innerHTML = "❌ Неверно. " + q.explanation;
+      }
+
+      setTimeout(() => {
+        currentQuestion++;
+        if (currentQuestion < quizData.length) {
+          showQuestion();
+        } else {
+          showResult();
+        }
+      }, 1500);
     }
 
-    // Вешаем обработчики после загрузки страницы
-    document.getElementById("btn1").addEventListener("click", nextSlide);
-    document.getElementById("btn2").addEventListener("click", nextSlide);
-    document.getElementById("btn3").addEventListener("click", nextSlide);
+    function showResult() {
+      document.getElementById("quiz").style.display = "none";
+      const resultDiv = document.getElementById("quizResult");
+      resultDiv.style.display = "block";
+      resultDiv.innerHTML = `Ты набрал ${score} из ${quizData.length}!<br>
+        ${score === quizData.length ? "Отлично, ты настоящий CyberGuard! 🔐" : "Хорошо! Но стоит повторить правила ⚡️"}<br><br>
+        <button onclick="showSlide(0)">Пройти снова</button>`;
+    }
   </script>
 </body>
 </html>
